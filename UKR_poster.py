@@ -3,6 +3,9 @@ from time import sleep
 from multiprocessing import Pool
 import random
 import vk_api
+import os
+
+path = os.path.dirname(__file__) + 'Likes-Bots.txt'
 
 class UkrainiansAPI:
 	
@@ -121,9 +124,9 @@ class UkrainiansAPI:
 					'Accept-Language': 'ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4,uk;q=0.2',
 					'Authorization': 'bearer ' + self.token
 					}).json()['id']
-				for i in [i.split() for i in open(r"C:\Users\user\Desktop\UA_bot\Likes-Bots.txt").readlines()][:random.randint(self.likesrange[0], self.likesrange[1])]:
+				for i in [i.split() for i in open(path).readlines()][:random.randint(self.likesrange[0], self.likesrange[1])]:
 					self.clickLike(i)
-				for i in [i.split() for i in open(r"C:\Users\user\Desktop\UA_bot\Likes-Bots.txt").readlines()][:random.randint(self.sharerange[0], self.sharerange[1])]:
+				for i in [i.split() for i in open(path).readlines()][:random.randint(self.sharerange[0], self.sharerange[1])]:
 					self.makeShare(i)
 				lastImage = image
 			sleep(self.sleepTime)
