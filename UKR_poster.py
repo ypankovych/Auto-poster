@@ -106,7 +106,7 @@ class UkrainiansAPI:
 	def postImages(self, lastImage = None):
 		while True:
 			image = self.getImageFrom4ch()
-			if lastImage != image and imageInfo is not None:
+			if lastImage != image and image is not None:
 				imageInfo = self.uploadImage(path = image, url = True)
 				self.post_id = requests.post(UkrainiansAPI.postUrl, data = {
 					"receiverId":self.groupID,
