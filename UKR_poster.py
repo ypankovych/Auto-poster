@@ -1,6 +1,5 @@
 import requests
 from time import sleep
-from multiprocessing import Pool
 import random
 import vk_api
 import os
@@ -62,7 +61,6 @@ class UkrainiansAPI:
 			}).json()
 
 	def clickLike(self, usrInfo):
-		print('HERE!!!')
 		authpls = {
 			'grant_type': 'password',
 			'userName': usrInfo[0], 
@@ -106,6 +104,7 @@ class UkrainiansAPI:
 		if self.SessionObject.wall.get(owner_id=-66814271, count = 2, timeout = 100)['items'][1]['marked_as_ads'] != 1:
 			return self.SessionObject.wall.get(owner_id=-66814271, count = 2, timeout = 100)['items'][1]['attachments'][0]['photo']['photo_604']
 		return None
+
 	def postImages(self, lastImage = None):
 		while True:
 			image = self.getImageFrom4ch()
@@ -132,5 +131,5 @@ class UkrainiansAPI:
 			sleep(self.sleepTime)
 
 if __name__ == '__main__':
-	Poster = UkrainiansAPI(vkUserName = '380667113250', vkPassword = '3221852q', userName = 'slava3221852@gmail.com', password = '3221852q1337_alban', groupID = '40', sleepTime = 60, likesrange = [30, 45], sharerange = [8, 16])
+	Poster = UkrainiansAPI(vkUserName = '', vkPassword = '', userName = '', password = '', groupID = '', sleepTime = 60, likesrange = [30, 45], sharerange = [8, 16])
 	Poster.postImages()
